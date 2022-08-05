@@ -38,7 +38,6 @@ def create_train_and_test_set(ecfp_path: str,
     """
     # load smiles array
     smiles = np.load(os.path.join(base_path, "data/smiles.npy"), allow_pickle=True)
-
     # load cddd
     cddd_reader = h5py.File(os.path.join(base_path, "data/cddd.hdf5"), "r")
     cddd = np.array(cddd_reader.get('cddd'))
@@ -47,7 +46,6 @@ def create_train_and_test_set(ecfp_path: str,
     cluster = np.load(os.path.join(base_path, "data/cluster.npy"), allow_pickle=True)
     # load ecfp
     ecfp = np.load(os.path.join(base_path, ecfp_path), allow_pickle=True)
-
     if not random_split:
         test_index = [c == test_group for c in cluster]
         test_index = np.nonzero(test_index)[0]
