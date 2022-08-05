@@ -149,6 +149,22 @@ def get_eval_data(ecfp_path, smiles_path, batch_size=256, num_workers=5):
 
     return torch_dataloader, smiles_data
 
+class ListDataset(Dataset):
+
+    def __init__(self, tensor):
+        self.data = tensor
+
+    def __getitem__(self, index):
+        return self.data[index]
+
+    def __len__(self):
+        return len(self.data)
+
+def get_loader_list(ecfp_list, batch_size=256, num_workers=5):
+    dataset = ListDataset(ecfp_list)
+    dataloader = DataLoader(dataset, batch_size=batch_size, num_workers=num_workers, shuffle=False)
+
+    return dataloader
 
 class EarlyStopping:
     """Early stops the training if a metric doesn't improve after a given patience."""
