@@ -1,0 +1,3 @@
+[submodule "cddd"]
+	path = cddd
+	url = https://github.com/eggggo/cddd
