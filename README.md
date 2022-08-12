@@ -112,7 +112,7 @@ cluster validation dataset and temporal dataset in  in the Notebook `source/eval
 ## Running Wrapper Function
 1. Clone this repo and create a conda env using the `environment.yml` file. In the activated environment install pytorch with `conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch`.
 
-2. Clone the cddd repo within the above repo as found [here](https://github.com/eggggo/cddd). In the same environment(neuraldecipher) as above, install tensorflow using `pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.10.0-cp36-cp36m-linux_x86_64.whl`. Note that this is the cpu version as I have run into severe dependency conflicts with the gpu version and thus have not gotten it to work.
+2. Clone the cddd repo within the above repo as found [here](https://github.com/jrwnter/cddd). In the same environment(neuraldecipher) as above, install tensorflow using `pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.10.0-cp36-cp36m-linux_x86_64.whl`. Note that this is the cpu version as I have run into severe dependency conflicts with the gpu version and thus have not gotten it to work.
 
 3. Follow the instructions to download the pretrained cddd model and place the unzipped default_model folder in the /cddd/data directory.
 
