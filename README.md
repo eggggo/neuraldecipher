@@ -109,3 +109,15 @@ cluster validation dataset and temporal dataset in  in the Notebook `source/eval
 ## References
 [1] T. Le, R. Winter, F. Noe and D. Clevert, Chem. Sci., 2020, [DOI: 10.1039/D0SC03115A](https://doi.org/10.1039/D0SC03115A)
 
+## Running Wrapper Function
+1. Clone this repo and create a conda env using the `environment.yml` file. In the activated environment install pytorch with `conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch`.
+
+2. Clone the cddd repo within the above repo as found [here](https://github.com/eggggo/cddd). In the same environment(neuraldecipher) as above, install tensorflow using `pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.10.0-cp36-cp36m-linux_x86_64.whl`. Note that this is the cpu version as I have run into severe dependency conflicts with the gpu version and thus have not gotten it to work.
+
+3. Follow the instructions to download the pretrained cddd model and place the unzipped default_model folder in the /cddd/data directory.
+
+4. To insure the neuraldecipher cddd imports are referencing the local files(and do not error) you may need to add the /cddd directory to the PYTHONPATH or some other solution(I ran `export PYTHONPATH="${PYTHONPATH}:/home/gene/neuraldecipher/cddd"` to resolve this).
+
+5. In a separate process with the same neuraldecipher environment, run `python source/run_cddd_inference_server.py --device 0,1,2 --nservers 6` from the neuraldecipher root. This should run a cddd inference server with the above configuration parameters.
+
+6. You can now call the `predict()` method from inference.py, passing in a list of 1024 bit ECFPs and obtaining a corresponding list of smiles. Invalid smiles will be replaced with None.  
